@@ -7,17 +7,17 @@ import { Http } from "@angular/http";
     selector: 'mi-tipo-objeto-buscar',
     template: `
     <div>
-    <h1>Buscar TipoObjeto por ID</h1>
-    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-        <input type="text" ngModel name="id" placeholder="Ingrese el id" />
-        <button type="submit">Buscar</button>
-    </form> 
-    <ul>
-    <li *ngIf="tipoObjetoBuscado">
-        <span>{{ tipoObjetoBuscado.nombre }}</span> - {{tipoObjetoBuscado.codigo}}
-    </li>  
-  </ul>
-</div>
+        <h1>Buscar TipoObjeto por ID</h1>
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                 <input type="text" ngModel name="id" placeholder="Ingrese el id" />
+                <button type="submit">Buscar</button>
+            </form> 
+            <ul>
+                <li *ngIf="tipoObjetoBuscado">
+                    <span>{{ tipoObjetoBuscado.nombre }}</span> - {{tipoObjetoBuscado.codigo}}
+                </li>  
+            </ul>
+        </div>
     `
 })
 
