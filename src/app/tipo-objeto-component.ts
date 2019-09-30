@@ -11,9 +11,9 @@ import { Http } from "@angular/http";
         <h2>{{tipoObjetoDetalle.nombre}}</h2>
             <form (ngSubmit)="onSubmit(f)" #f="ngForm" >
                 <label>Nombre:</label>
-                <input type="text" ngModel name="nombre">
+                <input [(ngModel)] = "tipoObjetoDetalle.nombre" type="text" ngModel name="nombre">
                 <label>Codigo:</label>
-                <input type="text" ngModel name="codigo">  
+                <input [(ngModel)] = "tipoObjetoDetalle.codigo" type="text" ngModel name="codigo">  
                 <button type="submit">MODIFICAR</button>  
                 <button (click)="borrarTipoObjeto()">BORRAR</button>
             </form>
@@ -31,13 +31,13 @@ export class TipoObjetoComponent{
     onSubmit(form: NgForm) {
         const { value: body } = form;
         console.log(this.tipoObjetoDetalle)
-        this.http.put("https://proyecto-backend-jsa-2.herokuapp.com/api/tipoObjeto/"+this.tipoObjetoDetalle._id, body)
+        this.http.put("http://proyectojsa215125.herokuapp.com/api/tipoObjeto/"+this.tipoObjetoDetalle._id, body)
           .subscribe(res => {
               console.log(body);
           });  
       }
     borrarTipoObjeto(){
-        this.http.delete("https://proyecto-backend-jsa-2.herokuapp.com/api/tipoObjeto/"+this.tipoObjetoDetalle._id)
+        this.http.delete("http://proyectojsa215125.herokuapp.com/api/tipoObjeto/"+this.tipoObjetoDetalle._id)
         .subscribe(res => {
             console.log(res);
         });  

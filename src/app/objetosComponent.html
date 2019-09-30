@@ -3,10 +3,16 @@
         <h1>{{ tituloNuevoObjeto }}</h1>
         <form (ngSubmit)="onSubmit(f)" #f="ngForm">
             <input type="text" ngModel name="numeroOrden" placeholder="Ingrese el numero de orden..." />
+            <br>
             <input type="text" ngModel name="estado" placeholder="Ingrese el estado..." />
+            <br>
             <input type="text" ngModel name="tipoObjeto" placeholder="Ingrese el codigo del tipo del objeto..." />
+            <br>
             <input type="text" ngModel name="descripcion" placeholder="Ingrese la descripcion..." />
+            <br>
             <input type="text" ngModel name="precio" placeholder="Ingrese el precio..." />
+            <br>
+            <br>
             <button type="submit">Ingresar</button>
         </form> 
     </div>
@@ -15,13 +21,33 @@
         <h1>{{ tituloListadoObjeto }} </h1>
         <ul>
             <li *ngFor="let unObjeto of objetos" (click)="elegirObjeto(unObjeto)" >
-                <span>{{ unObjeto.estado }}           
-                </span> - {{unObjeto.numeroOrden}}
-                 - {{unObjeto.tipoObjeto}}
-                 - {{unObjeto.descripcion}}
-                 - {{unObjeto.precio}}
+                <span>
+                    <label>Estado :</label>
+                    {{ unObjeto.estado }} 
+                              
+                </span> - <label>numero de Orden :</label> {{unObjeto.numeroOrden}}
+                 - <label>tipo de Objeto :</label> {{unObjeto.tipoObjeto}}
+                 - <label>descripcion :</label>{{unObjeto.descripcion}}
+                 - <label>precio :</label>{{unObjeto.precio}}
             </li>  
           </ul>
     </div>
-   
+    <div>
+        <h1>{{ tituloListadoObjetosEstado }}</h1>
+        <input type="text"  [(ngModel)]='textoDeInput' placeholder="Ingrese un estado..." />
+        <br>
+        <button *ngIf ='textoDeInput' (click)="objetosEstado(textoDeInput)">Filtrar</button>
+        <ul>
+                <li *ngFor="let unObjeto of listobjetosEstado">
+                    <span>
+                        <label>Estado :</label>
+                        {{ unObjeto.estado }} 
+                                  
+                    </span> - <label>numero de Orden :</label> {{unObjeto.numeroOrden}}
+                     - <label>tipo de Objeto :</label> {{unObjeto.tipoObjeto}}
+                     - <label>descripcion :</label>{{unObjeto.descripcion}}
+                     - <label>precio :</label>{{unObjeto.precio}}
+                </li>  
+              </ul>
+    </div>
     <mi-objeto [objetoDetalle]="objetoElegido"></mi-objeto>

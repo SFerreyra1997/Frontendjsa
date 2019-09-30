@@ -24,7 +24,7 @@ constructor(private http: Http) {}
 
  onSubmit(form: NgForm) {
   const { value: body } = form;
-  this.http.post("http://proyecto-backend-jsa-2.herokuapp.com/api/tipoObjeto", body)
+  this.http.post("http://proyectojsa215125.herokuapp.com/api/tipoObjeto", body)
     .subscribe(res => {
       this.mostrarTiposDeObjetos();
     });  
@@ -34,7 +34,7 @@ constructor(private http: Http) {}
 
 mostrarTiposDeObjetos() {
   this.http
-    .get("http://proyecto-backend-jsa-2.herokuapp.com/api/tipoObjeto")
+    .get("http://proyectojsa215125.herokuapp.com/api/tipoObjeto")
     .subscribe(res => {
       this.tiposDeObjetos = res.json();
     });

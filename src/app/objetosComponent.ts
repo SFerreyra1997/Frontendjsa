@@ -12,20 +12,23 @@ import { Objeto } from './objeto';
 
 export class ObjetoComponent implements OnInit { 
   objetos: any = [];
+  listobjetosEstado: any = [];
   objetoElegido: Objeto;
   ngOnInit() {
     this.mostrarObjetos();
   }
   tituloNuevoObjeto = 'Nuevo Objeto';
-  tituloListadoObjeto = 'Todos Objetos'
+  tituloListadoObjeto = 'Todos Objetos';
+  tituloListadoObjetosEstado = 'Todos Objetos Estado Especifico'
 
 
 constructor(private http: Http) {}
 
  onSubmit(form: NgForm) {
   const { value: body } = form;
-  this.http.post("http://proyecto-backend-jsa-2.herokuapp.com/api/objeto", body)
+  this.http.post("https://proyectojsa215125.herokuapp.com/api/objetos", body)
     .subscribe(res => {
+      console.log(res);
       this.mostrarObjetos();
     });  
 }
@@ -34,7 +37,7 @@ constructor(private http: Http) {}
 
 mostrarObjetos() {
   this.http
-    .get("http://proyecto-backend-jsa-2.herokuapp.com/api/objeto")
+    .get("https://proyectojsa215125.herokuapp.com/api/objetos")
     .subscribe(res => {
       this.objetos = res.json();
     });
@@ -44,11 +47,14 @@ elegirObjeto(_objeto: Objeto): void {
   this.objetoElegido = _objeto;
 }
 
-
-
-
+objetosEstado(estado : string): void {
+ this.listobjetosEstado = [];
+  for(let x=0;x<this.objetos.length;x++)
+      if (this.objetos[x].estado==estado)
+      {
+        this.listobjetosEstado.push(this.objetos[x]);
+      }
  }
-
-
+}
 
 
