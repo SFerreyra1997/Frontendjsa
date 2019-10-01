@@ -14,8 +14,11 @@ export class ObjetoComponent implements OnInit {
   objetos: any = [];
   listobjetosEstado: any = [];
   objetoElegido: Objeto;
+  tiposDeObjetos: any = [];
+  tiposDeEstados = ["Excelente", "Bueno", "Aceptable", "Malo", "Hecho Percha"];
   ngOnInit() {
     this.mostrarObjetos();
+    this.mostrarTiposDeObjetos();
   }
   tituloNuevoObjeto = 'Nuevo Objeto';
   tituloListadoObjeto = 'Todos Objetos';
@@ -55,6 +58,14 @@ objetosEstado(estado : string): void {
         this.listobjetosEstado.push(this.objetos[x]);
       }
  }
+
+ mostrarTiposDeObjetos() {
+  this.http
+    .get("http://proyectojsa215125.herokuapp.com/api/tipoObjeto")
+    .subscribe(res => {
+      this.tiposDeObjetos = res.json();
+    });
+}
 }
 
 

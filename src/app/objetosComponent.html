@@ -4,9 +4,15 @@
         <form (ngSubmit)="onSubmit(f)" #f="ngForm">
             <input type="text" ngModel name="numeroOrden" placeholder="Ingrese el numero de orden..." />
             <br>
-            <input type="text" ngModel name="estado" placeholder="Ingrese el estado..." />
+            <label>Seleccione estado del objeto: </label>
+            <select ngModel name="estado">
+                <option *ngFor="let unTipoDeEstado of tiposDeEstados">{{unTipoDeEstado}}</option>
+            </select>
             <br>
-            <input type="text" ngModel name="tipoObjeto" placeholder="Ingrese el codigo del tipo del objeto..." />
+            <label>Seleccione tipo de objeto: </label>
+            <select ngModel name="tipoObjeto">
+                <option *ngFor="let unTipoDeObjeto of tiposDeObjetos">{{unTipoDeObjeto.codigo}}</option>
+            </select>
             <br>
             <input type="text" ngModel name="descripcion" placeholder="Ingrese la descripcion..." />
             <br>
@@ -23,9 +29,9 @@
             <li *ngFor="let unObjeto of objetos" (click)="elegirObjeto(unObjeto)" >
                 <span>
                     <label>Estado :</label>
-                    {{ unObjeto.estado }} 
-                              
-                </span> - <label>numero de Orden :</label> {{unObjeto.numeroOrden}}
+                    {{ unObjeto.estado }}         
+                </span> 
+                 - <label>numero de Orden :</label> {{unObjeto.numeroOrden}}
                  - <label>tipo de Objeto :</label> {{unObjeto.tipoObjeto}}
                  - <label>descripcion :</label>{{unObjeto.descripcion}}
                  - <label>precio :</label>{{unObjeto.precio}}

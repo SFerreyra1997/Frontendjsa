@@ -40,6 +40,7 @@ export class TipoObjetoComponent{
         this.http.delete("http://proyectojsa215125.herokuapp.com/api/tipoObjeto/"+this.tipoObjetoDetalle._id)
         .subscribe(res => {
             console.log(res);
+            window.location.reload();
         });  
     }
 }

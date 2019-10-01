@@ -28,7 +28,7 @@ export class TipoObjetoBusquedaComponent{
     tipoObjetoBuscado: TipoObjeto;
     onSubmit(form: NgForm) {
         const { value: body } = form;
-        this.http.get("https://proyecto-backend-jsa-2.herokuapp.com/api/tipoObjeto/"+body.id)
+        this.http.get("https://proyectojsa215125.herokuapp.com/api/tipoObjeto/"+body.id)
           .subscribe(res => {
               this.tipoObjetoBuscado = res.json();
               console.log(res);

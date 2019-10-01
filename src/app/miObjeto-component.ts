@@ -18,7 +18,7 @@ import { ObjetoComponent } from './objetosComponent';
                 <input [(ngModel)] = "objetoDetalle.numeroOrden" type="text" ngModel name="numeroOrden">  
                 <br>
                 <label>Codigo de tipo de objeto: </label>
-                <input [(ngModel)] = "objetoDetalle.codigo" type="text" ngModel name="codigo">
+                <input [(ngModel)] = "objetoDetalle.tipoObjeto" type="text" ngModel name="tipoObjeto">
                 <br>
                 <label>Descripcion: </label>
                 <input [(ngModel)] = "objetoDetalle.descripcion" type="text" ngModel name="descripcion">  
@@ -38,7 +38,11 @@ import { ObjetoComponent } from './objetosComponent';
 
 export class MiObjetoComponent{
     @Input()
-    objetoDetalle:Objeto
+    objetoDetalle:Objeto;
+    tiposDeObjetos: any = [];
+    ngOnInit() {
+        this.mostrarTiposDeObjetos();
+      }
     constructor(private http: Http) {}
 
     onSubmit(form: NgForm) {
@@ -56,4 +60,12 @@ export class MiObjetoComponent{
             window.location.reload();
         });  
     }
+
+    mostrarTiposDeObjetos() {
+        this.http
+          .get("http://proyectojsa215125.herokuapp.com/api/tipoObjeto")
+          .subscribe(res => {
+            this.tiposDeObjetos = res.json();
+          });
+      }
 }
